@@ -1,15 +1,23 @@
 package fr.pawly.app
 
 object UserStore {
-    var prenom    = "Prénom"
-    var nom       = "Nom"
-    var email     = "utilisateur@email.fr"
-    var telephone = "+33 6 12 34 56 78"
-    var adresse   = "12 rue de la Paix, Paris"
-    var role      = "Propriétaire d'animal 🐾"
-    var statut    = "Non vérifié"
-    var bio       = "Passionné(e) des animaux 🐾"
-    var nbGardes  = 0
-    var nbAnimaux = 0
-    var nbAvis    = 0
+
+    var currentUserId: String = ""
+
+    var prenom: String    = "Prénom"
+    var nom: String       = "Nom"
+    var email: String     = "utilisateur@email.fr"
+    var telephone: String = "+33 6 12 34 56 78"
+    var adresse: String   = "12 rue de la Paix, Paris"
+
+
+    var role: String      = "proprietaire"
+
+    var statut: String    = "Non vérifié"
+    var bio: String       = "Passionné(e) des animaux 🐾"
+
+    // Statistiques
+    var nbGardes: Int  = 0
+    var nbAnimaux: Int = 0
+    var nbAvis: Int    = 0
 }

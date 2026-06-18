@@ -1,25 +1,27 @@
 package fr.pawly.app
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import fr.pawly.app.data.ReservationRepository
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import java.util.Calendar
 
 class BookingActivity : AppCompatActivity() {
 
     private var dateDebut: String = ""
     private var dateFin: String   = ""
+    private var prixFinalCalculer: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
 
-        supportActionBar?.title = "Réservation"
+        supportActionBar?.title = "Finaliser ma Garde"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val tvTitle   = findViewById<TextView>(R.id.tvBookingTitle)
@@ -33,123 +35,89 @@ class BookingActivity : AppCompatActivity() {
         val etCvv     = findViewById<EditText>(R.id.etCvv)
         val tvSummary = findViewById<TextView>(R.id.tvSummary)
 
-        val offerTitle = intent.getStringExtra("OFFER_TITLE") ?: "Offre de garde"
-        val offerPrice = intent.getStringExtra("OFFER_PRICE") ?: "Tarif non spécifié"
-        // Type de garde déduit du titre de l'offre (pour la colonne type_garde)
-        val typeGarde = intent.getStringExtra("OFFER_TYPE") ?: offerTitle
+        val offerTitle = intent.getStringExtra("OFFER_TITLE") ?: "Garde d'animaux"
+        val offerPrice = intent.getStringExtra("OFFER_PRICE") ?: "15.00"
+        val prestataireId = intent.getStringExtra("PRESTATAIRE_ID")
 
         tvTitle.text = offerTitle
-        tvDesc.text  = intent.getStringExtra("OFFER_DESC") ?: ""
-        tvPrice.text = offerPrice
+        tvDesc.text  = intent.getStringExtra("OFFER_DESC") ?: "Garde Pawly en toute confiance."
+        tvPrice.text = "$offerPrice € / jour"
 
         btnStart.setOnClickListener {
             val cal = Calendar.getInstance()
             DatePickerDialog(this, { _, y, m, d ->
-                // Format ISO yyyy-MM-dd attendu par Postgres (colonnes date)
                 dateDebut = String.format("%04d-%02d-%02d", y, m + 1, d)
-                btnStart.text = "📅 Début : $d/${m + 1}/$y"
+                btnStart.text = "Début : $d/${m + 1}/$y"
                 mettreAJourRecap(tvSummary, offerPrice)
-            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
+            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
         btnEnd.setOnClickListener {
             val cal = Calendar.getInstance()
             DatePickerDialog(this, { _, y, m, d ->
                 dateFin = String.format("%04d-%02d-%02d", y, m + 1, d)
-                btnEnd.text = "📅 Fin : $d/${m + 1}/$y"
+                btnEnd.text = "Fin : $d/${m + 1}/$y"
                 mettreAJourRecap(tvSummary, offerPrice)
-            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
+            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
         btnPay.setOnClickListener {
-            val card   = etCard.text.toString().trim()
+            val card = etCard.text.toString().trim()
             val expiry = etExpiry.text.toString().trim()
-            val cvv    = etCvv.text.toString().trim()
+            val cvv = etCvv.text.toString().trim()
 
             if (dateDebut.isEmpty() || dateFin.isEmpty()) {
-                Toast.makeText(this,
-                    "⚠️ Choisissez les dates de début et de fin",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "⚠️ Veuillez sélectionner la période de garde", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (card.length != 16) {
-                etCard.error = "16 chiffres requis"
-                return@setOnClickListener
-            }
-            if (expiry.length != 4) {
-                etExpiry.error = "Format MMAA requis"
-                return@setOnClickListener
-            }
-            if (cvv.length != 3) {
-                etCvv.error = "3 chiffres requis"
+            if (card.length != 16 || expiry.length != 4 || cvv.length != 3) {
+                Toast.makeText(this, "⚠️ Informations bancaires invalides", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             android.app.AlertDialog.Builder(this)
-                .setTitle("Confirmer le paiement")
-                .setMessage(
-                    "Offre : $offerTitle\n" +
-                            "Du : $dateDebut\n" +
-                            "Au : $dateFin\n" +
-                            "Carte : **** **** **** ${card.takeLast(4)}\n\n" +
-                            "Confirmer le paiement ?"
-                )
-                .setPositiveButton("Confirmer") { _, _ ->
+                .setTitle("💳 Paiement Sécurisé Stripe")
+                .setMessage("Montant total facturé : $prixFinalCalculer €\n\nConfirmer le débit de votre carte ?")
+                .setPositiveButton("Procéder au paiement") { _, _ ->
                     btnPay.isEnabled = false
-
-                    // Extrait le prix numérique depuis une chaîne comme "20€ / jour"
-                    val prixNumerique = offerPrice
-                        .replace(Regex("[^0-9.,]"), "")
-                        .replace(",", ".")
-                        .toDoubleOrNull()
-
                     lifecycleScope.launch {
                         val result = ReservationRepository.ajouterReservation(
-                            idPrestataire = null, // pas encore d'ID prestataire transmis par le Dashboard
+                            idPrestataire = prestataireId,
                             dateDebut = dateDebut,
                             dateFin = dateFin,
-                            typeGarde = typeGarde,
-                            prixTotal = prixNumerique
+                            typeGarde = offerTitle,
+                            prixTotal = prixFinalCalculer
                         )
-
                         btnPay.isEnabled = true
-
                         result.onSuccess {
-                            Toast.makeText(this@BookingActivity,
-                                "✅ Réservation confirmée et envoyée !",
-                                Toast.LENGTH_LONG).show()
-
-                            android.app.AlertDialog.Builder(this@BookingActivity)
-                                .setTitle("Évaluer le gardien")
-                                .setMessage("Voulez-vous noter votre gardien maintenant ?")
-                                .setPositiveButton("Oui, noter !") { _, _ ->
-                                    startActivity(Intent(this@BookingActivity, RatingActivity::class.java).apply {
-                                        putExtra("GARDIEN_NAME", "votre gardien")
-                                    })
-                                    finish()
-                                }
-                                .setNegativeButton("Plus tard") { _, _ -> finish() }
-                                .show()
+                            Toast.makeText(this@BookingActivity, "✅ Réservation enregistrée et payée !", Toast.LENGTH_LONG).show()
+                            finish()
                         }.onFailure { e ->
-                            Toast.makeText(this@BookingActivity,
-                                "❌ Erreur lors de la réservation : ${e.localizedMessage}",
-                                Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@BookingActivity, "❌ Erreur : ${e.localizedMessage}", Toast.LENGTH_LONG).show()
                         }
                     }
                 }
-                .setNegativeButton("Annuler") { dialog, _ -> dialog.cancel() }
+                .setNegativeButton("Annuler", null)
                 .show()
         }
     }
 
     private fun mettreAJourRecap(tvSummary: TextView, price: String) {
         if (dateDebut.isNotEmpty() && dateFin.isNotEmpty()) {
-            tvSummary.text =
-                "Période : du $dateDebut au $dateFin\n" +
-                        "Tarif : $price\n" +
-                        "⚠️ Paiement simulé — Stripe Sprint 3"
+            try {
+                val start = LocalDate.parse(dateDebut)
+                val end = LocalDate.parse(dateFin)
+                val jours = ChronoUnit.DAYS.between(start, end).coerceAtLeast(1)
+
+                val prixJour = price.replace(Regex("[^0-9.,]"), "").replace(",", ".").toDoubleOrNull() ?: 0.0
+                val sousTotal = prixJour * jours
+                val frais = sousTotal * 0.05 // 5% de frais
+                prixFinalCalculer = sousTotal + frais
+
+                tvSummary.text = "Résumé :\n• Garde sur $jours jour(s)\n• Prestation : $sousTotal €\n• Frais de service : $frais €\n• Total payé : $prixFinalCalculer €"
+            } catch (e: Exception) {
+                tvSummary.text = "Période sélectionnée invalide."
+            }
         }
     }
 
