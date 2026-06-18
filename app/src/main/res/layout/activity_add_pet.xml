@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/pawly_background">
+
+    <!-- Formulaire -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/pawly_white"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajouter un animal 🐾"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/pawly_teal"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etPetName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nom de l'animal"
+            android:background="#EEEEEE"
+            android:paddingLeft="12dp"
+            android:textColor="#000000"
+            android:textColorHint="#999999"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type d'animal"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerPetType"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="#EEEEEE"
+            android:paddingLeft="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Âge"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerPetAge"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:background="#EEEEEE"
+            android:paddingLeft="8dp"/>
+
+        <!-- Upload document animal -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#EEEEEE"
+            android:padding="10dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📄 Carnet de santé / Vaccins"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tvDocAnimalStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aucun document uploadé"
+                    android:textSize="12sp"
+                    android:textColor="@color/pawly_grey"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnUploadDocAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="📎"
+                android:textSize="16sp"
+                android:backgroundTint="@color/pawly_orange"
+                android:textColor="@color/pawly_white"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSavePet"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Ajouter cet animal"
+            android:backgroundTint="@color/pawly_teal"
+            android:textColor="@color/pawly_white"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mes animaux enregistrés"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/pawly_dark"
+        android:padding="16dp"
+        android:background="@color/pawly_background"/>
+
+    <TextView
+        android:id="@+id/tvNoAnimaux"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aucun animal enregistré.\nAjoutez votre premier compagnon !"
+        android:textColor="@color/pawly_grey"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:visibility="visible"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAnimaux"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:visibility="gone"/>
+
+</LinearLayout>

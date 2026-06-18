@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="16dp"
+    android:layout_margin="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvVetName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Dr. Nom"
+            android:textStyle="bold"
+            android:textColor="#102A43"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tvVetUrgence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🚨 Urgences"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvVetAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📍 Adresse"
+        android:textColor="#555555"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvVetPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📞 Téléphone"
+            android:textColor="#1B5E20"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/tvVetDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🚶 0.5 km"
+            android:textColor="#999999"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

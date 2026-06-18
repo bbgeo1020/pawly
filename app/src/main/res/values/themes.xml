@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.PAWLY" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/pawly_teal</item>
+        <item name="colorPrimaryVariant">@color/pawly_teal_dark</item>
+        <item name="colorSecondary">@color/pawly_orange</item>
+        <item name="colorOnPrimary">@color/pawly_white</item>
+        <item name="android:colorBackground">@color/pawly_background</item>
+        <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button</item>
+    </style>
+    <style name="Theme.PAWLY" parent="Base.Theme.PAWLY"/>
+</resources>

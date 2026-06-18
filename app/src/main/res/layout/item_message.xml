@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <!-- Bulle MOI - droite -->
+    <LinearLayout
+        android:id="@+id/bubbleMoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:visibility="gone"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:id="@+id/tvMessageMoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#1B5E20"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:textSize="15sp"
+            android:maxWidth="260dp"/>
+
+        <TextView
+            android:id="@+id/tvHeureMoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="#999999"
+            android:layout_marginTop="2dp"/>
+
+    </LinearLayout>
+
+    <!-- Bulle AUTRE - gauche -->
+    <LinearLayout
+        android:id="@+id/bubbleAutre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="start"
+        android:visibility="gone"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:id="@+id/tvMessageAutre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:textColor="#102A43"
+            android:padding="12dp"
+            android:textSize="15sp"
+            android:maxWidth="260dp"/>
+
+        <TextView
+            android:id="@+id/tvHeureAutre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="#999999"
+            android:layout_marginTop="2dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

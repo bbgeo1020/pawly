@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Couleurs PAWLY officiel -->
+    <color name="pawly_primary">#4DBDBD</color>
+    <color name="pawly_teal">#4DBDBD</color>
+    <color name="pawly_orange">#F0854A</color>
+    <color name="pawly_dark">#3D3D3D</color>
+    <color name="pawly_teal_dark">#2E9E9E</color>
+    <color name="pawly_orange_dark">#D46A2E</color>
+    <color name="pawly_background">#F5FAFA</color>
+    <color name="pawly_white">#FFFFFF</color>
+    <color name="pawly_grey">#8A9BA8</color>
+    <color name="pawly_light_grey">#ECF3F3</color>
+    <color name="pawly_green_ok">#2E7D32</color>
+    <color name="pawly_red">#D32F2F</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

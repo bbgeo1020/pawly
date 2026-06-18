@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <!-- Bulle IA (gauche) -->
+    <LinearLayout
+        android:id="@+id/bubbleIA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="🤖"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="4dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMsgIA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#E0F7F7"
+                android:textColor="@color/pawly_dark"
+                android:padding="12dp"
+                android:textSize="14sp"
+                android:maxWidth="280dp"/>
+
+            <TextView
+                android:id="@+id/tvHeureIA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#999999"
+                android:layout_marginTop="2dp"/>
+
+        </LinearLayout>
+
+        <View android:layout_width="60dp" android:layout_height="1dp"/>
+
+    </LinearLayout>
+
+    <!-- Bulle User (droite) -->
+    <LinearLayout
+        android:id="@+id/bubbleUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:visibility="gone"
+        android:layout_marginBottom="8dp">
+
+        <View android:layout_width="60dp" android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/tvMsgUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/pawly_teal"
+                android:textColor="@color/pawly_white"
+                android:padding="12dp"
+                android:textSize="14sp"
+                android:maxWidth="280dp"/>
+
+            <TextView
+                android:id="@+id/tvHeureUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#999999"
+                android:layout_marginTop="2dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

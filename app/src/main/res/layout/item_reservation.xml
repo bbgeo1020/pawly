@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/pawly_white"
+    android:padding="16dp"
+    android:layout_margin="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvResaTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Titre"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/pawly_dark"/>
+
+        <TextView
+            android:id="@+id/tvResaStatut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✅ Confirmée"
+            android:textSize="13sp"
+            android:textColor="@color/pawly_teal"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvResaDates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📅 Dates"
+        android:textColor="@color/pawly_grey"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/tvResaPrix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="💰 Prix"
+        android:textColor="@color/pawly_orange"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnAnnulerResa"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="Annuler la réservation"
+        android:backgroundTint="@color/pawly_red"
+        android:textColor="@color/pawly_white"
+        android:textSize="13sp"/>
+
+</LinearLayout>

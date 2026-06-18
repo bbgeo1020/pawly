@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F4F8">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#1B5E20"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="PAWLY 🐾"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="👤 Profil"
+            android:textSize="11sp"
+            android:backgroundTint="#102A43"
+            android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+
+    <!-- Bouton carte -->
+    <Button
+        android:id="@+id/btnOpenMap"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="📍 Voir les gardiens sur la carte"
+        android:backgroundTint="#102A43"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_margin="12dp"/>
+
+    <!-- Filtres -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filtrer : "
+            android:textStyle="bold"
+            android:textColor="#333333"/>
+
+        <Spinner
+            android:id="@+id/spinnerFilter"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:background="@android:drawable/btn_dropdown"/>
+
+    </LinearLayout>
+
+    <!-- Liste offres -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOffers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"/>
+
+</LinearLayout>

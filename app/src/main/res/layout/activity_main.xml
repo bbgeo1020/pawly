@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/pawly_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐾 PAWLY"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/pawly_teal"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Créer mon compte"
+            android:layout_gravity="center"
+            android:textColor="@color/pawly_dark"
+            android:textSize="15sp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Prénom -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Prénom *" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="4dp"/>
+        <EditText android:id="@+id/etFirstName"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="Votre prénom" android:inputType="textPersonName"
+            android:background="#EEEEEE" android:paddingLeft="14dp"
+            android:textColor="#000000" android:textColorHint="#999999"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Nom -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Nom *" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="4dp"/>
+        <EditText android:id="@+id/etLastName"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="Votre nom" android:inputType="textPersonName"
+            android:background="#EEEEEE" android:paddingLeft="14dp"
+            android:textColor="#000000" android:textColorHint="#999999"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Email -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Email *" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="4dp"/>
+        <EditText android:id="@+id/etEmail"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="nom@exemple.com" android:inputType="textEmailAddress"
+            android:background="#EEEEEE" android:paddingLeft="14dp"
+            android:textColor="#000000" android:textColorHint="#999999"
+            android:layout_marginBottom="4dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Un code OTP sera envoyé à cette adresse."
+            android:textSize="11sp" android:textColor="@color/pawly_grey"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Téléphone -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Téléphone *" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="4dp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+            android:background="#EEEEEE" android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🇫🇷 +33 " android:textColor="#000000"
+                android:textStyle="bold" android:paddingLeft="10dp"/>
+            <EditText android:id="@+id/etPhone"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:hint="612345678" android:inputType="phone"
+                android:textColor="#000000" android:textColorHint="#999999"
+                android:background="@null"/>
+        </LinearLayout>
+
+        <!-- Adresse postale -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Adresse postale *" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="4dp"/>
+        <EditText android:id="@+id/etAdresse"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="12 rue de la Paix, 75001 Paris"
+            android:inputType="textPostalAddress"
+            android:background="#EEEEEE" android:paddingLeft="14dp"
+            android:textColor="#000000" android:textColorHint="#999999"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Rôle / Statut -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Je suis... *" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="8dp"/>
+
+        <RadioGroup android:id="@+id/rgRole"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_marginBottom="16dp">
+
+            <RadioButton android:id="@+id/rbProprietaire"
+                android:layout_width="match_parent" android:layout_height="56dp"
+                android:text="🐕  Propriétaire d'animal"
+                android:textColor="#000000" android:textSize="15sp"
+                android:checked="true" android:paddingLeft="16dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/radio_selector"
+                android:buttonTint="@color/pawly_teal"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton android:id="@+id/rbPrestataire"
+                android:layout_width="match_parent" android:layout_height="56dp"
+                android:text="🏠  Gardien / Prestataire"
+                android:textColor="#000000" android:textSize="15sp"
+                android:paddingLeft="16dp" android:gravity="center_vertical"
+                android:background="@drawable/radio_selector"
+                android:buttonTint="@color/pawly_teal"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton android:id="@+id/rbAdmin"
+                android:layout_width="match_parent" android:layout_height="56dp"
+                android:text="⚙️  Administrateur PAWLY"
+                android:textColor="#000000" android:textSize="15sp"
+                android:paddingLeft="16dp" android:gravity="center_vertical"
+                android:background="@drawable/radio_selector"
+                android:buttonTint="@color/pawly_teal"/>
+
+        </RadioGroup>
+
+        <!-- Documents -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Documents requis" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="8dp"/>
+
+        <!-- Pièce d'identité -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#EEEEEE" android:padding="12dp"
+            android:layout_marginBottom="8dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🪪 Pièce d'identité *"
+                    android:textStyle="bold" android:textColor="#000000" android:textSize="14sp"/>
+                <TextView android:id="@+id/tvCarteStatus"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Non uploadée" android:textSize="12sp"
+                    android:textColor="#D32F2F"/>
+            </LinearLayout>
+            <Button android:id="@+id/btnUploadCarte"
+                android:layout_width="wrap_content" android:layout_height="40dp"
+                android:text="📎 Upload" android:textSize="12sp"
+                android:backgroundTint="@color/pawly_orange"
+                android:textColor="@color/pawly_white"/>
+        </LinearLayout>
+
+        <!-- Attestation assurance -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#EEEEEE" android:padding="12dp"
+            android:layout_marginBottom="16dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🏠 Attestation d'assurance"
+                    android:textStyle="bold" android:textColor="#000000" android:textSize="14sp"/>
+                <TextView android:id="@+id/tvAssuranceStatus"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Non uploadée (optionnel)" android:textSize="12sp"
+                    android:textColor="@color/pawly_grey"/>
+            </LinearLayout>
+            <Button android:id="@+id/btnUploadAssurance"
+                android:layout_width="wrap_content" android:layout_height="40dp"
+                android:text="📎 Upload" android:textSize="12sp"
+                android:backgroundTint="@color/pawly_orange"
+                android:textColor="@color/pawly_white"/>
+        </LinearLayout>
+
+        <!-- Mot de passe -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Mot de passe *" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="4dp"/>
+        <EditText android:id="@+id/etPassword"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="Minimum 12 caractères" android:inputType="textPassword"
+            android:background="#EEEEEE" android:paddingLeft="14dp"
+            android:textColor="#000000" android:textColorHint="#999999"
+            android:layout_marginBottom="4dp"/>
+        <CheckBox android:id="@+id/cbShowPassword"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Afficher le mot de passe" android:textSize="12sp"
+            android:textColor="@color/pawly_dark"
+            android:buttonTint="@color/pawly_teal"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Confirmer MDP -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Confirmer le mot de passe *" android:textStyle="bold"
+            android:textColor="@color/pawly_dark" android:layout_marginBottom="4dp"/>
+        <EditText android:id="@+id/etConfirmPassword"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="Répéter le mot de passe" android:inputType="textPassword"
+            android:background="#EEEEEE" android:paddingLeft="14dp"
+            android:textColor="#000000" android:textColorHint="#999999"
+            android:layout_marginBottom="28dp"/>
+
+        <Button android:id="@+id/btnRegister"
+            android:layout_width="match_parent" android:layout_height="54dp"
+            android:text="CRÉER MON COMPTE"
+            android:backgroundTint="@color/pawly_teal"
+            android:textColor="@color/pawly_white"
+            android:textStyle="bold" android:textSize="15sp"/>
+
+        <TextView android:id="@+id/tvBackToLogin"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Déjà un compte ? Se connecter"
+            android:textColor="@color/pawly_orange" android:textStyle="bold"
+            android:layout_gravity="center" android:padding="8dp"
+            android:layout_marginBottom="24dp"/>
+
+    </LinearLayout>
+</ScrollView>

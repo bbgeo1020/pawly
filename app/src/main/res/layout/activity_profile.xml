@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pawly_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Cover photo style réseau social -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/pawly_teal"
+            android:gravity="bottom"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Avatar -->
+                <TextView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:text="🐾"
+                    android:textSize="36sp"
+                    android:gravity="center"
+                    android:background="#FFFFFF"
+                    android:layout_marginRight="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Prénom Nom"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/pawly_white"/>
+
+                    <TextView
+                        android:id="@+id/tvProfileRole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Propriétaire d'animal"
+                        android:textSize="13sp"
+                        android:textColor="#E0F7F7"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="✏️ Modifier"
+                    android:textSize="11sp"
+                    android:backgroundTint="@color/pawly_white"
+                    android:textColor="@color/pawly_teal"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Bio -->
+            <TextView
+                android:id="@+id/tvProfileBio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passionné(e) des animaux 🐾"
+                android:textSize="14sp"
+                android:textColor="@color/pawly_grey"
+                android:fontFamily="serif"
+                android:textStyle="italic"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Stats style Instagram -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/pawly_white"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tvStatAnimaux"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0\nAnimaux"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/pawly_teal"
+                    android:gravity="center"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#EEEEEE"/>
+
+                <TextView
+                    android:id="@+id/tvStatGardes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0\nRéservations"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/pawly_orange"
+                    android:gravity="center"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#EEEEEE"/>
+
+                <TextView
+                    android:id="@+id/tvStatAvis"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0\nAvis"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/pawly_dark"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <!-- Statut vérification -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/pawly_white"
+                android:padding="14dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tvStatutVerification"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="❌ Non vérifié"
+                    android:textSize="14sp"
+                    android:textColor="@color/pawly_red"/>
+
+                <Button
+                    android:id="@+id/btnVerifDocuments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="📁 Documents"
+                    android:textSize="11sp"
+                    android:backgroundTint="@color/pawly_orange"
+                    android:textColor="@color/pawly_white"/>
+
+            </LinearLayout>
+
+            <!-- Infos contact -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/pawly_white"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informations"
+                    android:textStyle="bold"
+                    android:textColor="@color/pawly_dark"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvProfileEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pawly_grey"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvProfilePhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pawly_grey"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvProfileAdresse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pawly_grey"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
+
+            <!-- Actions -->
+            <Button android:id="@+id/btnMyPets"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="🐕  Mes animaux"
+                android:backgroundTint="@color/pawly_teal"
+                android:textColor="@color/pawly_white" android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <Button android:id="@+id/btnMyReservations"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="📅  Mes réservations"
+                android:backgroundTint="@color/pawly_teal_dark"
+                android:textColor="@color/pawly_white" android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <Button android:id="@+id/btnJournal"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="📓  E-journal de garde"
+                android:backgroundTint="@color/pawly_orange"
+                android:textColor="@color/pawly_white" android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <Button android:id="@+id/btnVets"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="🏥  Vétérinaires à proximité"
+                android:backgroundTint="@color/pawly_red"
+                android:textColor="@color/pawly_white" android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <Button android:id="@+id/btnMessages"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="💬  Messages"
+                android:backgroundTint="#1565C0"
+                android:textColor="@color/pawly_white" android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <Button android:id="@+id/btnChatbot"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="🤖  Assistant IA PAWLY"
+                android:backgroundTint="#7B1FA2"
+                android:textColor="@color/pawly_white" android:textStyle="bold"
+                android:layout_marginBottom="24dp"/>
+
+            <Button android:id="@+id/btnLogout"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="🚪  Se déconnecter"
+                android:backgroundTint="@color/pawly_red"
+                android:textColor="@color/pawly_white" android:textStyle="bold"
+                android:layout_marginBottom="32dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pawly_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pawly_dark"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚙️ Administration PAWLY"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/pawly_teal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tableau de bord — Axentis Solutions"
+                android:textSize="13sp"
+                android:textColor="#BDC3C7"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Info clic -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💡 Appuyez sur une stat pour voir le détail"
+                android:textSize="12sp"
+                android:textColor="@color/pawly_grey"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- Stats ligne 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/pawly_teal"
+                    android:layout_marginRight="6dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView
+                        android:id="@+id/tvAdminUsers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="247"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/pawly_white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="👥 Utilisateurs"
+                        android:textSize="12sp"
+                        android:textColor="@color/pawly_white"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/pawly_orange"
+                    android:layout_marginLeft="6dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView
+                        android:id="@+id/tvAdminReservations"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="89"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/pawly_white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📅 Réservations"
+                        android:textSize="12sp"
+                        android:textColor="@color/pawly_white"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Stats ligne 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/pawly_red"
+                    android:layout_marginRight="6dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView
+                        android:id="@+id/tvAdminSignalements"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/pawly_white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🚨 Signalements"
+                        android:textSize="12sp"
+                        android:textColor="@color/pawly_white"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/pawly_green_ok"
+                    android:layout_marginLeft="6dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView
+                        android:id="@+id/tvAdminRevenue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 820€"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/pawly_white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💰 Revenus"
+                        android:textSize="12sp"
+                        android:textColor="@color/pawly_white"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Boutons actions admin -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/btnAdminUsers"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="👥 Utilisateurs"
+                    android:backgroundTint="@color/pawly_teal"
+                    android:textColor="@color/pawly_white"
+                    android:textSize="12sp"
+                    android:layout_marginRight="6dp"/>
+
+                <Button
+                    android:id="@+id/btnAdminStats"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="📈 Statistiques"
+                    android:backgroundTint="@color/pawly_orange"
+                    android:textColor="@color/pawly_white"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="6dp"/>
+
+            </LinearLayout>
+
+            <!-- Signalements -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🚨 Signalements à traiter"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/pawly_dark"
+                android:layout_marginBottom="8dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSignalements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btnAdminLogout"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="🚪 Se déconnecter"
+                android:backgroundTint="@color/pawly_red"
+                android:textColor="@color/pawly_white"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#2C3E50">
+
+    <!-- Logo Axentis simulé en texte -->
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:text="🌳"
+        android:textSize="72sp"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AXENTIS SOLUTIONS"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:letterSpacing="0.15"
+        android:layout_marginBottom="6dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="W E   B U I L D   W H A T   M A T T E R S"
+        android:textSize="11sp"
+        android:textColor="#BDC3C7"
+        android:letterSpacing="0.2"
+        android:layout_marginBottom="60dp"/>
+
+    <!-- Ligne séparatrice -->
+    <View
+        android:layout_width="80dp"
+        android:layout_height="2dp"
+        android:background="#4DBDBD"
+        android:layout_marginBottom="60dp"/>
+
+    <!-- Logo PAWLY -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🐾"
+        android:textSize="48sp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAWLY"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#4DBDBD"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your pets are in good paws"
+        android:textSize="13sp"
+        android:textColor="#BDC3C7"
+        android:fontFamily="serif"
+        android:textStyle="italic"/>
+
+</LinearLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/pawly_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="28dp"
+        android:gravity="center_horizontal">
+
+        <!-- Logo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐾"
+            android:textSize="56sp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAWLY"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:textColor="@color/pawly_teal"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your pets are in good paws"
+            android:textSize="13sp"
+            android:textColor="@color/pawly_grey"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:layout_marginBottom="40dp"/>
+
+        <!-- Email -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textStyle="bold"
+            android:textColor="@color/pawly_dark"
+            android:layout_marginBottom="6dp"/>
+
+        <EditText
+            android:id="@+id/etLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="votre@email.fr"
+            android:inputType="textEmailAddress"
+            android:background="@color/pawly_white"
+            android:paddingLeft="14dp"
+            android:textColor="@color/pawly_dark"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Mot de passe -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mot de passe"
+            android:textStyle="bold"
+            android:textColor="@color/pawly_dark"
+            android:layout_marginBottom="6dp"/>
+
+        <EditText
+            android:id="@+id/etLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="••••••••••••"
+            android:inputType="textPassword"
+            android:background="@color/pawly_white"
+            android:paddingLeft="14dp"
+            android:textColor="@color/pawly_dark"
+            android:layout_marginBottom="8dp"/>
+
+        <CheckBox
+            android:id="@+id/cbShowLoginPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Afficher le mot de passe"
+            android:textColor="@color/pawly_grey"
+            android:textSize="12sp"
+            android:layout_gravity="start"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="SE CONNECTER"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:backgroundTint="@color/pawly_teal"
+            android:textColor="@color/pawly_white"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/tvGoToRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pas encore de compte ? S'inscrire"
+            android:textColor="@color/pawly_orange"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+</ScrollView>

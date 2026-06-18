@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">PAWLY</string>
+    <string name="title_activity_maps">Carte des gardiens</string>
+
+    <!-- Auth -->
+    <string name="login_title">Connexion PAWLY 🐾</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="hint_confirm_password">Répéter le mot de passe</string>
+    <string name="hint_phone">612345678</string>
+    <string name="btn_login">SE CONNECTER</string>
+    <string name="btn_register">CRÉER MON COMPTE</string>
+    <string name="show_password">Afficher le mot de passe</string>
+    <string name="go_to_register">Pas encore de compte ? S\'inscrire</string>
+    <string name="back_to_login">Déjà un compte ? Se connecter</string>
+
+    <!-- Animal -->
+    <string name="add_pet_title">Ajouter un compagnon 🐾</string>
+    <string name="hint_pet_name">Ex: Rocky</string>
+    <string name="label_pet_name">Nom de l\'animal</string>
+    <string name="label_pet_type">Type d\'animal</string>
+    <string name="label_pet_age">Âge</string>
+    <string name="btn_save_pet">ENREGISTRER L\'ANIMAL</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Offres de garde disponibles 🐾</string>
+    <string name="btn_open_map">📍 Voir les gardiens autour de moi</string>
+
+    <!-- Réservation -->
+    <string name="booking_title">Détails de la réservation 📅</string>
+    <string name="btn_select_date">📅 Choisir les dates</string>
+    <string name="btn_confirm_payment">💳 Confirmer et Payer (Stripe)</string>
+
+    <!-- Carte -->
+    <string name="map_demo_title">📍 Mode Démonstration (Géolocalisation)</string>
+    <string name="map_demo_desc">Les marqueurs des gardiens sont positionnés sur Paris.</string>
+</resources>
