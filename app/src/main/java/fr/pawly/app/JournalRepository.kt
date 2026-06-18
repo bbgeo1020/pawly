@@ -1,62 +1,42 @@
-package fr.pawly.app.data
+@file:OptIn(kotlinx.serialization.InternalSerializationApi::class)
+package fr.pawly.app // ✅ Ajusté à la racine pour correspondre à ton Models.kt et LoginActivity
 
 import fr.pawly.app.SupabaseManager
+import fr.pawly.app.UserStore
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.postgrest.postgrest
-import io.github.jan.supabase.postgrest.query.Order
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class JournalEntrySupabase(
+    val id: Int? = null,
+    @SerialName("id_utilisateur") val idUtilisateur: String, // ✅ Corrigé : CamelCase + @SerialName pour supprimer l'avertissement d'underscore
+    val titre: String,
+    val contenu: String,
+    @SerialName("date_creation") val dateCreation: String? = null // ✅ Corrigé : Idem
+)
 
 object JournalRepository {
-
     private val db = SupabaseManager.client.postgrest
 
-    private fun getUserId(): String =
-        SupabaseManager.client.auth.currentUserOrNull()?.id ?: ""
-
-    // ── Récupérer les entrées de l'utilisateur connecté ───────────
-    suspend fun getEntries(): Result<List<JournalSupabase>> {
-        return try {
-            val userId = getUserId()
+    suspend fun getEntries(): Result<List<JournalEntrySupabase>> = withContext(Dispatchers.IO) {
+        try {
+            val userId = UserStore.currentUserId.ifEmpty { SupabaseManager.client.auth.currentUserOrNull()?.id ?: "" }
             val list = db["e_journal"].select {
-                filter { eq("id_prestataire", userId) }
-                order("date_publication", Order.DESCENDING)
-            }.decodeList<JournalSupabase>()
+                filter { eq("id_utilisateur", userId) }
+            }.decodeList<JournalEntrySupabase>()
             Result.success(list)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+        } catch (e: Exception) { Result.failure(e) }
     }
 
-    // ── Ajouter une entrée ─────────────────────────────────────────
-    suspend fun ajouterEntree(
-        titre: String,
-        contenu: String,
-        typeContenu: String = "note"
-    ): Result<Unit> {
-        return try {
-            val userId = getUserId()
-            db["e_journal"].insert(
-                JournalSupabase(
-                    idPrestataire = userId,
-                    titre = titre,
-                    contenu = contenu,
-                    typeContenu = typeContenu
-                )
-            )
+    suspend fun ajouterEntree(titre: String, contenu: String): Result<Unit> = withContext(Dispatchers.IO) {
+        try {
+            val userId = UserStore.currentUserId.ifEmpty { SupabaseManager.client.auth.currentUserOrNull()?.id ?: "" }
+            db["e_journal"].insert(JournalEntrySupabase(idUtilisateur = userId, titre = titre, contenu = contenu))
             Result.success(Unit)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
-    // ── Supprimer une entrée ────────────────────────────────────────
-    suspend fun supprimerEntree(idArticle: String): Result<Unit> {
-        return try {
-            db["e_journal"].delete {
-                filter { eq("id_article", idArticle) }
-            }
-            Result.success(Unit)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+        } catch (e: Exception) { Result.failure(e) }
     }
 }

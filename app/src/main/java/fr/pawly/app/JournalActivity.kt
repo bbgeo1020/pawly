@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import fr.pawly.app.data.JournalRepository
+import fr.pawly.app.data.JournalGardeRepository
 import fr.pawly.app.data.JournalSupabase
 import kotlinx.coroutines.launch
 
@@ -18,43 +18,30 @@ class JournalActivity : AppCompatActivity() {
     private lateinit var journalAdapter: JournalAdapter
     private val entreesActuelles = mutableListOf<JournalSupabase>()
 
-    // Suggestions IA locales par type de contenu — purement côté client, non stockées en base
     private val suggestionsIA = mapOf(
         "repas" to listOf(
             "💡 Essayez une gamelle anti-glouton pour ralentir la prise alimentaire",
             "💡 Les tapis de léchage peuvent enrichir le moment du repas",
-            "💡 Une fontaine à eau encourage votre animal à s'hydrater davantage",
-            "💡 Des puzzles alimentaires stimulent l'instinct de chasseur"
+            "💡 Une fontaine à eau encourage votre animal à s'hydrater davantage"
         ),
         "promenade" to listOf(
             "💡 Un harnais anti-traction améliore le confort lors des promenades",
-            "💡 Les chaussettes de protection pour les pattes en hiver sont très utiles",
-            "💡 Un GPS pour collier vous permettra de localiser votre animal",
-            "💡 Une laisse rétractable offre plus de liberté dans les espaces ouverts"
+            "💡 Les chaussettes de protection pour les pattes en hiver sont très utiles"
         ),
         "jeux" to listOf(
             "💡 Les jouets à mâcher Kong remplissables de friandises sont excellents",
-            "💡 Une balle lanceur automatique pour les chiens actifs",
-            "💡 Les jouets interactifs avec plumes pour les chats stimulent l'instinct",
-            "💡 Un tunnel de jeu enrichit l'environnement des lapins et chats"
+            "💡 Une balle lanceur automatique pour les chiens actifs"
         ),
         "sieste" to listOf(
             "💡 Un lit orthopédique améliore le confort des grandes races",
-            "💡 Une couverture chauffante électrique sécurisée pour les vieux animaux",
-            "💡 Un coin calme dédié réduit l'anxiété de votre animal",
-            "💡 Des phéromones apaisantes (Adaptil/Feliway) aident à la détente"
+            "💡 Un coin calme dédié réduit l'anxiété de votre animal"
         ),
         "toilettage" to listOf(
-            "💡 Une brosse démêlante Furminator réduit les poils perdus de 90%",
-            "💡 Les lingettes nettoyantes sont pratiques entre deux bains",
-            "💡 Un séchoir à basse chaleur confort pour les après-bains",
-            "💡 Le shampoing sec est idéal pour un nettoyage rapide"
+            "💡 Une brosse démêlante Furminator réduit les poils perdus de 90%"
         ),
         "note" to listOf(
             "💡 Un distributeur automatique de croquettes facilite les horaires de repas",
-            "💡 Une caméra connectée vous permet de surveiller votre animal à distance",
-            "💡 Les activités d'enrichissement mental sont essentielles pour le bien-être",
-            "💡 Un bilan vétérinaire annuel est recommandé pour tous les animaux"
+            "💡 Une caméra connectée vous permet de surveiller votre animal à distance"
         )
     )
 
@@ -72,14 +59,14 @@ class JournalActivity : AppCompatActivity() {
 
         chargerEntrees()
 
-        findViewById<Button>(R.id.btnAddEntry).setOnClickListener {
+        findViewById<Button>(R.id.btnAddEntry)?.setOnClickListener {
             showAddEntryDialog()
         }
     }
 
     private fun chargerEntrees() {
         lifecycleScope.launch {
-            JournalRepository.getEntries().onSuccess { liste ->
+            JournalGardeRepository.getEntries().onSuccess { liste ->
                 entreesActuelles.clear()
                 entreesActuelles.addAll(liste)
                 journalAdapter.notifyDataSetChanged()
@@ -97,7 +84,6 @@ class JournalActivity : AppCompatActivity() {
         val etDesc     = dialogView.findViewById<EditText>(R.id.etEntryDesc)
         val spinner    = dialogView.findViewById<Spinner>(R.id.spinnerEmoji)
 
-        // Format "emoji label" -> on retrouve le type_contenu réel (clé en minuscule)
         val emojis = arrayOf(
             "🍽️ Repas", "🚶 Promenade", "😴 Sieste",
             "🎾 Jeux", "🛁 Toilettage", "💊 Médicament",
@@ -125,13 +111,11 @@ class JournalActivity : AppCompatActivity() {
                     .trim()
                     .ifEmpty { "note" }
 
-                // Génération suggestion IA locale (affichage uniquement, non stockée)
-                val suggestionsList = suggestionsIA[typeContenu]
-                    ?: suggestionsIA["note"]!!
+                val suggestionsList = suggestionsIA[typeContenu] ?: suggestionsIA["note"]!!
                 val suggestion = suggestionsList.random()
 
                 lifecycleScope.launch {
-                    val result = JournalRepository.ajouterEntree(
+                    val result = JournalGardeRepository.ajouterEntree(
                         titre = title,
                         contenu = desc,
                         typeContenu = typeContenu
@@ -166,12 +150,12 @@ class JournalActivity : AppCompatActivity() {
         RecyclerView.Adapter<JournalAdapter.ViewHolder>() {
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val tvEmoji:      TextView = view.findViewById(R.id.tvEntryEmoji)
-            val tvTitle:      TextView = view.findViewById(R.id.tvEntryTitle)
-            val tvDesc:       TextView = view.findViewById(R.id.tvEntryDesc)
-            val tvHeure:      TextView = view.findViewById(R.id.tvEntryHeure)
-            val tvSuggestion: TextView = view.findViewById(R.id.tvEntrySuggestion)
-            val btnDelete:    Button   = view.findViewById(R.id.btnDeleteEntry)
+            val tvEmoji:      TextView? = view.findViewById(R.id.tvEntryEmoji)
+            val tvTitle:      TextView? = view.findViewById(R.id.tvEntryTitle)
+            val tvDesc:       TextView? = view.findViewById(R.id.tvEntryDesc)
+            val tvHeure:      TextView? = view.findViewById(R.id.tvEntryHeure)
+            val tvSuggestion: TextView? = view.findViewById(R.id.tvEntrySuggestion)
+            val btnDelete:    Button?   = view.findViewById(R.id.btnDeleteEntry)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -180,7 +164,7 @@ class JournalActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val e = entries[position]
-            holder.tvEmoji.text = when (e.typeContenu) {
+            holder.tvEmoji?.text = when (e.typeContenu) {
                 "repas"      -> "🍽️"
                 "promenade"  -> "🚶"
                 "sieste"     -> "😴"
@@ -190,19 +174,18 @@ class JournalActivity : AppCompatActivity() {
                 "photo"      -> "📸"
                 else         -> "📝"
             }
-            holder.tvTitle.text = e.titre
-            holder.tvDesc.text  = e.contenu
-            holder.tvHeure.text = formaterHeure(e.datePublication)
+            holder.tvTitle?.text = e.titre
+            holder.tvDesc?.text  = e.contenu
+            holder.tvHeure?.text = formaterHeure(e.datePublication)
 
-            // Suggestion IA non stockée en base : on n'en affiche pas en relecture
-            holder.tvSuggestion.visibility = View.GONE
+            holder.tvSuggestion?.visibility = View.GONE
 
-            holder.btnDelete.setOnClickListener {
+            holder.btnDelete?.setOnClickListener {
                 android.app.AlertDialog.Builder(holder.itemView.context)
                     .setTitle("Supprimer cette entrée ?")
                     .setPositiveButton("Supprimer") { _, _ ->
                         lifecycleScope.launch {
-                            JournalRepository.supprimerEntree(e.idArticle).onSuccess {
+                            JournalGardeRepository.supprimerEntree(e.idArticle).onSuccess {
                                 entries.removeAt(position)
                                 notifyItemRemoved(position)
                                 Toast.makeText(holder.itemView.context,
@@ -223,7 +206,6 @@ class JournalActivity : AppCompatActivity() {
         private fun formaterHeure(datePublication: String?): String {
             if (datePublication.isNullOrEmpty()) return ""
             return try {
-                // Format Postgres typique: "2026-06-18T14:32:10.123456+00:00" ou "2026-06-18 14:32:10"
                 val timePart = datePublication
                     .substringAfter("T", datePublication)
                     .substringAfter(" ")

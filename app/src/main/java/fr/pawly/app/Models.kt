@@ -1,3 +1,4 @@
+@file:OptIn(kotlinx.serialization.InternalSerializationApi::class)
 package fr.pawly.app
 
 import kotlinx.serialization.SerialName
@@ -40,7 +41,6 @@ data class MessageDB(
     @SerialName("date_envoi") val dateEnvoi: String? = null
 )
 
-// ── CORRIGÉ : Ce modèle doit matcher EXACTEMENT la table Supabase et inclure tes colonnes de paiement / remboursement ──
 @Serializable
 data class ReservationSupabase(
     @SerialName("id_reservation") val idReservation: String? = null,
@@ -50,7 +50,7 @@ data class ReservationSupabase(
     @SerialName("date_fin") val dateFin: String,
     val statut: String = "en_attente",
     @SerialName("type_garde") val typeGarde: String?,
-    @SerialName("prix_total_frais_plateform") val prixTotalFraisPlateforme: Double?, // Orthographe exacte de ton erreur !
+    @SerialName("prix_total_frais_plateform") val prixTotalFraisPlateforme: Double?,
     @SerialName("statut_remboursement") val statutRemboursement: String = "Aucun",
     @SerialName("date_demande") val dateDemande: String? = null
 )
